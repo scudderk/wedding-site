@@ -1,0 +1,26 @@
+.form-control {
+  width: 100% !important;
+}
+
+body {
+  background-color: #222222 !important;
+}
+
+* {
+  color: white;
+}
+
+.-pageJump input, select {
+  color: #828282 !important;
+}
+
+.-previous, .-next {
+  background-color: #ff8383;
+  border-radius: 3px;
+}
+
+.ReactTable {
+  background-color: #828282;
+}
+
+/*# sourceMappingURL=site.css.map */

@@ -1,0 +1,15 @@
+{
+  "name": "wedding-site",
+  "version": "1.0.0",
+  "description": "A site for people to RSVP and find information about the wedding",
+  "main": "index.js",
+  "author": "Kyle Scudder",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.13",
+    "nodemon": "^2.0.7"
+  }
+}

@@ -1,0 +1,13 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+	  {
+		"type": "pwa-msedge",
+		"request": "launch",
+		"preLaunchTask": "Build", // The name of the task defined above
+		"name": "Launch Edge against localhost",
+		"url": "http://localhost:8000",
+		"webRoot": "${workspaceFolder}"
+	  }
+	]
+  }

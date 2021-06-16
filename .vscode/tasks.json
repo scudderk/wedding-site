@@ -1,0 +1,34 @@
+// Sass configuration
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build",
+			"dependsOn": [
+				"Sass_Compile",
+				"yarn_start",
+				"nodemon_start"
+			]
+		},
+		{
+			"label": "yarn_start",
+			"type": "shell",
+			"command": "cd .\\client\\; start",
+			"group": "build"
+		},
+		{
+			"label": "nodemon_start",
+			"type": "shell",
+			"command": "nodemon server/index.js",
+			"group": "build"
+		},
+		{
+			"label": "Sass_Compile",
+			"type": "shell",
+			"command": "sass client/src/style/site.scss client/src/style/site.css",
+			"group": "build"
+		}
+	]
+}

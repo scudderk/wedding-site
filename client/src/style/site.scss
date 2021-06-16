@@ -1,0 +1,21 @@
+$react-table-color: #828282;
+$secondary-table-color: rgb(255, 131, 131);
+.form-control {
+	width: 100% !important;
+}
+body {
+	background-color: rgb(34, 34, 34) !important;
+}
+* {
+	color: white;
+}
+.-pageJump input, select {
+	color: $react-table-color !important;
+}
+.-previous, .-next {
+	background-color: $secondary-table-color;
+	border-radius: 3px;
+}
+.ReactTable {
+	background-color: $react-table-color;
+}
