@@ -1,20 +1,21 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function submitLogin(e) {
-  localStorage.setItem('loggedIn', false);
-  window.location.reload(false);
+const handleSubmit = async (e) => {
+  localStorage.setItem('token', '{}');
 }
 
 function Logout() { 
   return (
     <div className="row">
       <div className="col">
-        <button className="btn btn-outline-success me-2"
-          onClick={submitLogin.bind(this)}
+      <form onSubmit={handleSubmit}>
+                <button className="btn btn-outline-success me-2"
+          type="submit"
         >
           Logout
         </button>
+        </form>
       </div>
     </div>
   );
