@@ -15,7 +15,7 @@
 		{
 			"label": "yarn_start",
 			"type": "shell",
-			"command": "cd .\\client\\; start",
+			"command": "cd .\\client\\; yarn start",
 			"group": "build"
 		},
 		{
