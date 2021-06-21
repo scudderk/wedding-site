@@ -60,7 +60,6 @@ class GuestList extends Component {
 
     componentDidMount = async () => {
         this.setState({ isLoading: true })
-
         await api.getAllGuests().then(guests => {
             this.setState({
                 guests: guests.data.data,

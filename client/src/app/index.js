@@ -1,15 +1,27 @@
-import React, { Component } from "react";
-import ".././style/site.css";
-import MainContent from "../app/MainContent";
+import { useState, useEffect } from 'react'
+import Routes from '../Routes'
+import { setAccessToken } from '../accessToken'
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <div className="my-auto"><MainContent /></div>
-      </div>
-    );
+function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/wedding/api/refresh_token", {
+    method: "POST",
+    credentials: 'include'
+  })
+  .then(async x => {
+    const data = await x.json()
+    setAccessToken(data.accessToken)
+    setLoading(false)
+  })
+  .catch((error) => error);
+  }, [])
+  if(loading) {
+    return <div>loading...</div>
   }
+  return (
+  <Routes />
+  )
 }
-
 export default App;

@@ -1,26 +1,29 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PropTypes from "prop-types";
-import api from "../api";
+import { getAccessToken, setAccessToken } from '../accessToken'
 
 async function loginUser(credentials) {
   return fetch("http://localhost:3000/wedding/api/login", {
     method: "POST",
+    credentials: 'include',
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(credentials),
   })
-    .then((data) => data.json())
+    .then((data) => {
+      data.json()
+      console.log(data)
+    })
     .catch((error) => error);
 }
 
 //Login Box
-function LoginBox({ setToken }) {
+function Login({ setToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const [encSecret, setEncSecret] = useState("");
 
   function showValidationErr(errorList) {
     setErrors(errorList);
@@ -62,11 +65,11 @@ function LoginBox({ setToken }) {
         password,
       }) 
         .then((response) => {
-          console.log(response);
           if (response.success === true) {
-            setToken(response);
+          setAccessToken(response.token)
           } else {
             errorList.push({ elm: "api", msg: "Login failed" });
+            console.log(errorList)
           }
         })
         .catch((error) => {
@@ -166,7 +169,7 @@ function LoginBox({ setToken }) {
     </div>
   );
 }
-export default LoginBox;
-LoginBox.propTypes = {
+export default Login;
+Login.propTypes = {
   setToken: PropTypes.func.isRequired,
 };

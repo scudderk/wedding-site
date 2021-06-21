@@ -1,5 +1,4 @@
-import GuestList from './GuestList'
-import GuestInsert from './GuestInsert'
-import GuestUpdate from './GuestUpdate'
+import Home from './Home'
+import Login from './Login'
 
-export { GuestList, GuestInsert, GuestUpdate }
+export { Home, Login }
