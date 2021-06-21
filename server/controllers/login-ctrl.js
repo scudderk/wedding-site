@@ -2,13 +2,32 @@ const User = require("../models/login-model");
 const bcrypto = require("bcryptjs");
 const { createRefreshToken, createAccessToken } = require("../auth/auth");
 require('dotenv').config()
+const jwt = require('jsonwebtoken');
+const { sendRefreshToken } = require("./sendRefreshToken");
 
 login = (req, res) => {
   loginUser(req, res);
 };
-module.exports = {
-  login,
+refresh_token = (req, res) => {
+  const token = req.cookies.jid
+  if (!token) {
+    res.send({ ok: false, accessToken: '' })
+  }
+  let payload = null;
+  try {
+    payload = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET)
+  } catch (err) {
+    res.send({ ok: false, accessToken: err})
+  }
+  const user = User.findOne({ id: payload.userId })
+  if (!user) {
+    res.send({ ok: false, accessToken: ''})
+  }
+  
+  sendRefreshToken(res, createRefreshToken(user));
+  return res.send({ ok: true, accessToken: createAccessToken(user) })
 };
+
 async function loginUser(req, res) {
   const body = req.body;
   if (!body) {
@@ -51,3 +70,7 @@ async function returnResult(statusCode, suc, msg) {
     error: msg,
   });
 }
+module.exports = {
+  login,
+  refresh_token
+};

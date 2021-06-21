@@ -2,7 +2,6 @@ const Guest = require('../models/guest-model')
 
 createGuest = (req, res) => {
     const body = req.body
-	console.log(body)
     if (!body) {
         return res.status(400).json({
             success: false,
@@ -103,17 +102,22 @@ getGuestById = async (req, res) => {
 }
 
 getGuests = async (req, res) => {
-    await Guest.find({}, (err, guests) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
-        if (!guests.length) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Guest not found` })
-        }
-        return res.status(200).json({ success: true, data: guests })
-    }).catch(err => console.log(err))
+    if (req.payload)
+    {
+        await Guest.find({}, (err, guests) => {
+            if (err) {
+                return res.status(400).json({ success: false, error: err })
+            }
+            if (!guests.length) {
+                return res
+                    .status(404)
+                    .json({ success: false, error: `Guest not found` })
+            }
+            return res.status(200).json({ success: true, data: guests })
+        }).catch(err => console.log(err))
+    } else {
+        return res.status(400).json({ success: false, error: 'Not authenticated' })
+    }
 }
 
 module.exports = {

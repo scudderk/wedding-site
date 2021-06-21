@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 require('dotenv').config()
+const cookieParser = require('cookie-parser')
 
 const db = require('./db')
 const guestRouter = require('./routes/guest-router')
@@ -10,6 +11,7 @@ const loginRouter = require('./routes/login-router')
 const app = express()
 const apiPort = 3000
 
+app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 app.use(bodyParser.json())
@@ -17,7 +19,7 @@ app.use(bodyParser.json())
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send(req.cookies)
 })
 
 app.use('/wedding/api', guestRouter)

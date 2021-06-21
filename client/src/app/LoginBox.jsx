@@ -57,8 +57,6 @@ function LoginBox({ setToken }) {
     }
     e.preventDefault();
     if (errorList.length === 0) {
-      const payload = { username, password };
-
       loginUser({
         username,
         password,
