@@ -68,7 +68,7 @@ class GuestUpdate extends Component {
           onChange={this.handleChangeInputForename}
         />
 
-        <label style="margin: 5px">Surname: </label>
+        <label className="margin-5p">Surname: </label>
         <input
           className="form-control"
           type="text"

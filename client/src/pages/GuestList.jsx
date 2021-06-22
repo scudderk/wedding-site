@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import ReactTable from 'react-table'
 import api from '../api'
 import 'react-table/react-table.css'
+import { createBrowserHistory } from 'history';
+const history = createBrowserHistory();
 
 class UpdateGuest extends Component {
     updateUser = event => {
@@ -45,11 +47,20 @@ class GuestList extends Component {
 
     componentDidMount = async () => {
         this.setState({ isLoading: true })
-        await api.getAllGuests().then(guests => {
-            this.setState({
-                guests: guests.data.data,
-                isLoading: false,
-            })
+        await api.getAllGuests()
+        .then(guests => {
+            console.log(guests.data.success)
+            if (guests.data.success === false) {
+                history.push('/login')
+            } else {
+                this.setState({
+                    guests: guests.data.data,
+                    isLoading: false,
+                })
+            }
+        })
+        .catch((err) => {
+            console.log(err)
         })
     }
 
@@ -102,8 +113,10 @@ class GuestList extends Component {
         ]
 
         let showTable = true
-        if (!guests.length) {
-            showTable = false
+        if (guests !== null) {
+            if (!guests.length) {
+                showTable = false
+            }
         }
 
         return (

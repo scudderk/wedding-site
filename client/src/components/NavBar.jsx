@@ -10,7 +10,7 @@ class NavBar extends Component {
                 <div className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <Logo />
                     <Links />
-                    <Logout />
+                    <Logout /> 
                 </div>
             </div>
         )
