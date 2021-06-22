@@ -8,6 +8,10 @@ const { sendRefreshToken } = require("./sendRefreshToken");
 login = (req, res) => {
   loginUser(req, res);
 };
+logOut = (req, res) => {
+  sendRefreshToken(res,'');
+  return res.send({ ok: true, success: true })
+};
 refresh_token = (req, res) => {
   const token = req.cookies.jid
   if (!token) {
@@ -118,6 +122,7 @@ async function loginUser(req, res) {
 }
 module.exports = {
   login,
+  logOut,
   refresh_token,
   revokeRefreshTokenForUser
 };

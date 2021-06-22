@@ -1,10 +1,13 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { createBrowserHistory } from 'history';
-const history = createBrowserHistory();
 
 const handleSubmit = async (e) => {
-  history.push('/login')
+  return fetch("http://localhost:3000/wedding/api/logout", {
+    method: "POST",
+    credentials: 'include',
+  })
+  .then(response => response.json())
+  .catch((error) => error);
 }
 
 function Logout() { 
