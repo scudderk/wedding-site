@@ -60,7 +60,7 @@ class GuestUpdate extends Component {
       <div className="form-group">
         <div className="h1">Create Guest</div>
 
-        <label style="margin: 5px">Forename: </label>
+        <label className="margin-5p">Forename: </label>
         <input
           className="form-control"
           type="text"
@@ -76,7 +76,7 @@ class GuestUpdate extends Component {
           onChange={this.handleChangeInputSurname}
         />
 
-        <label style="margin: 5px">Guest Group ID: </label>
+        <label className="margin-5p">Guest Group ID: </label>
         <input
           className="form-control"
           type="number"

@@ -23,4 +23,22 @@ body {
   background-color: #828282;
 }
 
+.btn-update {
+  color: #ef9b0f;
+  cursor: pointer;
+}
+
+.btn-delete {
+  color: #ff0000;
+  cursor: pointer;
+}
+
+.table-padding {
+  padding: 0 40px 40px 40px;
+}
+
+.margin-5p {
+  margin: 5px;
+}
+
 /*# sourceMappingURL=site.css.map */

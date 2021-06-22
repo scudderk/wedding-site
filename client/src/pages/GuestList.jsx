@@ -11,7 +11,7 @@ class UpdateGuest extends Component {
     }
 
     render() {
-        return <div style="color:#ef9b0f;cursor: pointer;" onClick={this.updateUser}>Update</div>
+        return <div className="btn-update" onClick={this.updateUser}>Update</div>
     }
 }
 
@@ -30,7 +30,7 @@ class DeleteGuest extends Component {
     }
 
     render() {
-        return <div style="color: #ff0000;cursor: pointer;" onClick={this.deleteUser}>Delete</div>
+        return <div className="btn-delete" onClick={this.deleteUser}>Delete</div>
     }
 }
 class GuestList extends Component {
@@ -107,7 +107,7 @@ class GuestList extends Component {
         }
 
         return (
-            <div style="padding: 0 40px 40px 40px">
+            <div className="table-padding">
                 {showTable && (
                     <ReactTable
                         data={guests}
