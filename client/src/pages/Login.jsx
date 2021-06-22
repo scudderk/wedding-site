@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import PropTypes from "prop-types";
 import { setAccessToken } from '../accessToken'
 import { createBrowserHistory } from 'history';
 const history = createBrowserHistory();
@@ -14,11 +13,11 @@ async function loginUser(credentials) {
     },
     body: JSON.stringify(credentials),
   })
-    .then((data) => {
-      data.json()
-      console.log(data)
-    })
-    .catch((error) => error);
+  .then(response => response.json())
+  .then(data => {
+    return data
+  })
+  .catch((error) => error);
 }
 
 //Login Box
