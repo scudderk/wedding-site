@@ -3,7 +3,9 @@ const jwt = require("jsonwebtoken");
 var isAuth = function (req, res, next) {
   const authorisation = req.headers['authorization']
   if (!authorisation) {
-    throw new Error('Not authenticated')
+    return res
+    .status(201)
+    .json({ success: false, error: `Not authenticated` })
   }
   try {
     const token = authorisation.split(' ')[1]
@@ -11,7 +13,9 @@ var isAuth = function (req, res, next) {
     req.payload = payload
     return next()
   } catch(err) {
-    throw new Error('Not authenticated')
+    return res
+    .status(201)
+    .json({ success: false, error: `Not authenticated` })
   }
 }
 module.exports = {
