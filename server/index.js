@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-require('dotenv').config()
+require('dotenv').config({path:__dirname+'/.env'})
 const cookieParser = require('cookie-parser')
 
 const db = require('./db')
